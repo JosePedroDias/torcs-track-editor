@@ -17,6 +17,14 @@ function road(ctx, W, SCALE, POS) {
   }
 
   const r = {
+    clear: function() {
+      t.clear();
+      return r;
+    },
+    color: function(clr) {
+      t.color(clr);
+      return r;
+    },
     straight: function(l) {
       t = t
       .push()

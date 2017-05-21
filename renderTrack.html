@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>render track</title>
+    <style>
+      html, body {
+        margin: 0;
+      }
+      body {
+        overflow: auto;
+      }
+      canvas {
+        background-color: #DDD;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="libs/ajax.js"></script>
+    <script src="libs/fakeCtx.js"></script>
+    <script src="libs/turtle.js"></script>
+    <script src="libs/road.js"></script>
+    <script src="libs/track.js"></script>
+
+    <!--
+      https://sourceforge.net/p/speed-dreams/code/HEAD/tree/trunk/data/tracks/
+      https://sourceforge.net/p/speed-dreams/code/HEAD/tree/trunk/data/tracks/road/allondaz/allondaz.xml?format=raw
+    -->
+    <script>
+      const corsPrefix = 'https://cors-anywhere.herokuapp.com/';
+      const defCtg = 'road';
+      const defName = 'lombaro'
+      let track = `https://cors-anywhere.herokuapp.com/sourceforge.net/p/speed-dreams/code/HEAD/tree/trunk/data/tracks/${defCtg}/${defName}/${defName}.xml?format=raw`;
+
+      if (location.hash) {
+        let url = location.hash.substring(1);
+        url = url.split('://')[1];
+        url = corsPrefix + url;
+        track = url;
+      }
+
+      ajax(track, function(err, track) {
+        if (err) {
+          return window.alert('Problem loading track ' + track);
+        }
+        renderTrack(track);
+      });
+    </script>
+  </body>
+</html>
