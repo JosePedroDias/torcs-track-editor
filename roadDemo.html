@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>turtle demo</title>
+    <style>
+      html, body {
+        margin: 0;
+      }
+      body {
+        overflow: auto;
+      }
+      canvas {
+        border: 1px solid #AAA;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas width="800" height="800"></canvas>
+    
+    <script src="libs/turtle.js"></script>
+    <script src="libs/road.js"></script>
+
+    <script>
+      const c = document.querySelector('canvas');
+      const ctx = c.getContext('2d');
+      const r = road(ctx, 6, 3, [400, 400]);
+
+      r
+      //.straight(40)
+      .arc(90, 40, 40)
+      .straight(20)
+      .arc(90, 40, 40)
+      .straight(20)
+      .arc(90, 40, 40)
+      .straight(20)
+      .arc(90, 40, 40)
+      .straight(20)
+    </script>
+  </body>
+</html>

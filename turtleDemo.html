@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>turtle demo</title>
+    <style>
+      html, body {
+        margin: 0;
+      }
+      body {
+        overflow: auto;
+      }
+      canvas {
+        border: 1px solid #AAA;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas width="400" height="400"></canvas>
+    
+    <script src="libs/turtle.js"></script>
+
+    <script>
+      const c = document.querySelector('canvas');
+      const ctx = c.getContext('2d');
+      const t = turtle(ctx);
+      
+      /*t
+      .setPos(200, 200)
+      .straight(60)
+      .turn(30).straight(60)
+      .turn(30).straight(60)
+      .turn(30).straight(60)*/
+
+      /*t
+      .setPos(200, 200)
+      .straight(20)
+      //.straight(20, true)
+      .log()
+      .left(60, true)
+      .log()
+      .straight(20)*/
+
+     const a = -45;
+     const s = 9;
+     const r0 = 60;
+     const r1 = 60;
+     const w = 6/2;
+
+     t
+      .setPos(200, 200)
+
+      .push()
+      .straight(40).arc(a, r0, r1, s)
+
+      .pop(1)
+      .left(w, true)
+      .straight(40).arc(a, r0+w, r0+w, s)
+      .pop(1)
+      .left(-w, true)
+      .straight(40).arc(a, r0-w, r0-w, s)
+
+      //.left(40)
+      //.arc(360, 90, 90, 36)
+
+      //.color('#f00').push().arc(90, 60, 60, 6).pop()
+      //.color('#0f0').push().arc(90, 30, 60, 6).pop()
+      //.color('#00f').push().arc(90, 60, 30, 6).pop()
+      //.left(70, true)
+
+      //.color('#a00').push().arc(60, 60, 60, 6).pop()
+      //.color('#0a0').push().arc(60, 30, 60, 6).pop()
+      //.color('#00a').push().arc(60, 60, 30, 6)
+    </script>
+  </body>
+</html>
