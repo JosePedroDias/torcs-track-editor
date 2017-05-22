@@ -29,3 +29,7 @@ Currently supported types and attributes (I assume the units):
     <section name="Right Border">
     <section name="Right Side">
     <section name="Right Barrier">
+
+
+must study this document:
+<https://commut3r.wordpress.com/2009/11/10/track-creation-104-grades-and-cambers/>

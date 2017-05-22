@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>edit track</title>
+    <style>
+      html, body {
+        margin: 0;
+      }
+      body {
+        overflow: auto;
+        font-family: sans-serif;
+      }
+      #gui {
+        width: 400px;
+      }
+      canvas {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #EEE;
+      }
+      bold {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://rawgit.com/snabbdom/snabbdom/master/dist/snabbdom.js"></script>
+    <script src="https://rawgit.com/snabbdom/snabbdom/master/dist/snabbdom-attributes.js"></script>
+    <script src="https://rawgit.com/snabbdom/snabbdom/master/dist/snabbdom-class.js"></script>
+    <script src="https://rawgit.com/snabbdom/snabbdom/master/dist/snabbdom-eventlisteners.js"></script>
+    <script src="https://rawgit.com/snabbdom/snabbdom/master/dist/snabbdom-patch.js"></script>
+    <script src="https://rawgit.com/snabbdom/snabbdom/master/dist/snabbdom-props.js"></script>
+    <script src="https://rawgit.com/snabbdom/snabbdom/master/dist/snabbdom-style.js"></script>
+    <script src="https://rawgit.com/snabbdom/snabbdom/master/dist/h.js"></script>
+
+    <div id="gui"></div>
+
+    <script src="libs/ajax.js"></script>
+    <script src="libs/fakeCtx.js"></script>
+    <script src="libs/turtle.js"></script>
+    <script src="libs/road.js"></script>
+    <script src="libs/track.js"></script>
+    <script src="libs/trackForm.js"></script>
+
+    <script>
+      let track = 'tracks/basic.xml'; // empty / basic
+
+      if (location.hash) {
+        let url = location.hash.substring(1);
+        if (url.indexOf('://') !== -1) { // cors
+          url = url.split('://')[1];
+          url = 'https://cors-anywhere.herokuapp.com/' + url;
+        }
+        track = url;
+      }
+
+      ajax(track, function(err, track) {
+        if (err) {
+          return window.alert('Problem loading track ' + track);
+        }
+        editTrack(track);
+      });
+    </script>
+  </body>
+</html>

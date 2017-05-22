@@ -21,20 +21,15 @@
     <script src="libs/road.js"></script>
     <script src="libs/track.js"></script>
 
-    <!--
-      https://sourceforge.net/p/speed-dreams/code/HEAD/tree/trunk/data/tracks/
-      https://sourceforge.net/p/speed-dreams/code/HEAD/tree/trunk/data/tracks/road/allondaz/allondaz.xml?format=raw
-    -->
     <script>
-      const corsPrefix = 'https://cors-anywhere.herokuapp.com/';
-      const defCtg = 'road';
-      const defName = 'lombaro'
-      let track = `https://cors-anywhere.herokuapp.com/sourceforge.net/p/speed-dreams/code/HEAD/tree/trunk/data/tracks/${defCtg}/${defName}/${defName}.xml?format=raw`;
+      let track = 'tracks/basic.xml';
 
       if (location.hash) {
         let url = location.hash.substring(1);
-        url = url.split('://')[1];
-        url = corsPrefix + url;
+        if (url.indexOf('://') !== -1) { // cors
+          url = url.split('://')[1];
+          url = 'https://cors-anywhere.herokuapp.com/' + url;
+        }
         track = url;
       }
 
