@@ -1,6 +1,8 @@
 function road(ctx, W, SCALE, POS) {
   'use strict';
 
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+
   if (!SCALE) {
     SCALE = 1;
   }

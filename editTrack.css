@@ -1,0 +1,49 @@
+html, body {
+  margin: 0;
+}
+
+body {
+  overflow: auto;
+  font-family: sans-serif;
+}
+
+#gui {
+  width: 400px;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #EEE;
+}
+
+label {
+  display: inline-block;
+  width: 5em;
+}
+
+input {
+  width: 5em;
+  text-align: right;
+}
+
+button {
+
+}
+
+bold {
+  font-weight: bold;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.segment {
+  position: relative;
+  background-color: #FDD;
+}
+.segment:nth-child(2n) {
+  background-color: #DFD;
+}

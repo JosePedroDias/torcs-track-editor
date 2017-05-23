@@ -1,8 +1,6 @@
 (function(global) {
   'use strict';
 
-  const SCALE = 1;
-
   function toArr(lst) {
     return Array.prototype.slice.apply(lst);
   }
@@ -124,7 +122,6 @@
     console.log(track);
 
     const canvasSize = 800;
-    const sc = computeScale(track, canvasSize);
 
     // setup canvas
     const cEl = document.createElement('canvas');
@@ -135,6 +132,7 @@
 
     // do the rendering
     function refreshTrackCb(selectedIndex) {
+      const sc = computeScale(track, canvasSize);
       parseTrack(track, ctx, sc.scale, sc.center, selectedIndex);
     }
 
