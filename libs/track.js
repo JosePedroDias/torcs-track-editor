@@ -119,7 +119,7 @@
   }
 
   function editTrack(track) {
-    console.log(track);
+    //console.log(track);
 
     const canvasSize = 800;
 

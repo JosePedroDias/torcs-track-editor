@@ -14,18 +14,30 @@
     ]);
   }
 
+  function createBtns(idx, add) {
+    return h('div.buttons', [
+      h('button', {attrs:{'data-type':'str', 'data-index':idx}, on:{click:add}}, '+str'),
+      h('button', {attrs:{'data-type':'lft', 'data-index':idx}, on:{click:add}}, '+lft'),
+      h('button', {attrs:{'data-type':'rgt', 'data-index':idx}, on:{click:add}}, '+rgt')
+    ]);
+  }
+
   function segments(segs, refresh) {
-    function add() {
-      refresh(-1, {action:'add', index:0});
+    function add(ev) {
+      refresh(-1, {action:'add', index:0, type:ev.target.dataset.type});
     }
-    const children = segs.map(function(s, idx) {
+
+    let children = [createBtns(0, add)];
+
+    segs.forEach(function(s, idx) {
       const tp = str(s, 'type');
-      if (tp === 'str') { return straight(s, idx, refresh); }
-      if (tp === 'lft' || tp === 'rgt') { return arc(s, idx, refresh); }
-      else return 'TODO: ' + tp;
+      if (tp === 'str') { children.push(straight(s, idx, refresh)); }
+      else if (tp === 'lft' || tp === 'rgt') { children.push(arc(s, idx, refresh)); }
+      else children.push('TODO: ' + tp);
+      children.push(createBtns(idx+1, add));
     });
-    children.unshift(h('button', {on:{click:add}}, '+'));
-    return h('div', children);
+
+    return h('div.segments', children);
   }
 
   function straight(s, idx, refresh) {
@@ -41,6 +53,7 @@
   }
 
   function arc(s, idx, refresh) {
+    function updateType(ev) { str(s, 'type', ev.target.value); refresh(idx); }
     function updateArc(ev) { num(s, 'arc', ev.target.value); refresh(idx); }
     function updateR0(ev) { num(s, 'radius', ev.target.value); refresh(idx); }
     function updateR1(ev) { num(s, 'end radius', ev.target.value); refresh(idx); }
@@ -49,9 +62,14 @@
     const arc = num(s, 'arc');
     const r0 = num(s, 'radius');
     let r1 = num(s, 'end radius');
-    let sign = (tp === 'rgt') ? -1 : 1;
     return h('div.segment', [
       h('bold', 'arc'), h('br'),
+      h('label', 'direction'),
+      h('select', {on:{change:updateType}},
+        ['lft', 'rgt'].map(function(type) {
+          return h('option', {props:{value:type, selected:type === tp}}, type);
+        })
+      ), h('br'),
       h('label', 'arc'),
       h('input', {props:{value:arc, type:'number'}, on:{change:updateArc}}), ' deg', h('br'),
       h('label', 'radius'),
@@ -65,7 +83,7 @@
   function createAttr(parentEl, name, val, unit) {
     const el = document.createElement('att' + (typeof val === 'number' ? 'num' : 'str'));
     el.setAttribute('name', name);
-    el.setAttribute('value', val);
+    el.setAttribute('val', val);
     if (unit !== undefined) {
       el.setAttribute('unit', unit);
     }
@@ -105,12 +123,17 @@
           case 'add':
             {
               const sectionEl = document.createElement('section');
-              createAttr(sectionEl, 'type', 'str');
-              createAttr(sectionEl, 'lg', 200, 'm');
-              //createAttr(sectionEl, 'arc', 200, 'deg');
-              //createAttr(sectionEl, 'radius', 200, 'm');
-              //createAttr(sectionEl, 'end radius', 200, 'm');
-              console.log(sectionEl);
+              if (op.type === 'str') {
+                createAttr(sectionEl, 'type', 'str');
+                createAttr(sectionEl, 'lg', 200, 'm');
+              }
+              else {
+                createAttr(sectionEl, 'type', op.type);
+                createAttr(sectionEl, 'arc', 200, 'deg');
+                createAttr(sectionEl, 'radius', 200, 'm');
+                createAttr(sectionEl, 'end radius', 200, 'm');
+              }
+              
               const p = segs[0].parentNode; // TODO if no segs!
               if (op.index <= segs.length) {
                 p.insertBefore(sectionEl, segs[op.index]);
