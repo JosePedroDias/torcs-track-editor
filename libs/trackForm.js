@@ -6,11 +6,23 @@
 
   function header(mt, refresh) {
     const width = num(mt, 'width');
-    const steps = num(mt, 'profil steps length');
+    const bgPath = str(mt, 'bg-path') || 'tracks/palmela.png';
+    const bgScale = num(mt, 'bg-scale') || 1;
+    const bgPosX = num(mt, 'bg-pos-x') || 0;
+    const bgPosY = num(mt, 'bg-pos-y') || 0;
+    //const steps = num(mt, 'profil steps length');
     function updateWidth(ev) { num(mt, 'width', ev.target.value); refresh(); }
+    function updateBgPath(ev) { str(mt, 'bg-path', ev.target.value); refresh(); }
+    function updateBgScale(ev) { num(mt, 'bg-scale', ev.target.value); refresh(); }
+    function updateBgPosX(ev) { num(mt, 'bg-pos-x', ev.target.value); refresh(); }
+    function updateBgPosY(ev) { num(mt, 'bg-pos-Y', ev.target.value); refresh(); }
     return h('div.header', [
-      h('label', 'width'),
-      h('input', {props:{value:width}, on:{change:updateWidth}})
+      h('label', 'width'), h('input', {props:{value:width, type:'number'}, on:{change:updateWidth}}), h('br'),
+      h('label', 'bg path'), h('input', {props:{value:bgPath}, on:{change:updateBgPath}}), h('br'),
+      h('label', 'bg scale'), h('input', {props:{value:bgScale, type:'number'}, on:{change:updateBgScale}}), h('br'),
+      h('label', 'bg position'),
+      h('input', {props:{value:bgPosX, type:'number'}, on:{change:updateBgPosX}}),
+      h('input', {props:{value:bgPosY, type:'number'}, on:{change:updateBgPosY}})
     ]);
   }
 

@@ -6,9 +6,14 @@
   }
 
   function _str(el, nodeName, name, val) {
-    const v = el.querySelector(nodeName + '[name="' + name + '"]');
+    let v = el.querySelector(nodeName + '[name="' + name + '"]');
     if (val === undefined) {
       return v ? v.getAttribute('val') : undefined;
+    }
+    if (!v) {
+      v = document.createElement(nodeName);
+      v.setAttribute('name', name);
+      el.appendChild(v);
     }
     v.setAttribute('val', val);
   }
@@ -119,7 +124,7 @@
   }
 
   function editTrack(track) {
-    //console.log(track);
+    console.log(track);
 
     const canvasSize = 800;
 
