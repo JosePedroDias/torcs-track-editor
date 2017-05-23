@@ -1,14 +1,20 @@
-function road(ctx, W, SCALE, POS) {
+function road(ctx, W, SCALE, POS, bgPath, bgScale, bgPos) {
   'use strict';
 
-  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  function setScale() {
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
 
-  if (!SCALE) {
-    SCALE = 1;
+    if (!SCALE) {
+      SCALE = 1;
+    }
+    else {
+      ctx.scale(SCALE, SCALE);
+    }
   }
-  else {
-    ctx.scale(SCALE, SCALE);
-  }
+
+  setScale();
+
+  
 
   const w = W/2;
   let t = turtle(ctx);
@@ -21,6 +27,24 @@ function road(ctx, W, SCALE, POS) {
   const r = {
     clear: function() {
       t.clear();
+
+      if (bgPath && isFinite(bgScale) && isFinite(bgPos[0]) && isFinite(bgPos[1])) {
+        ctx.scale(bgScale, bgScale);
+        ctx.translate(bgScale*bgPos[0], bgScale*bgPos[1]);
+        
+        let imgEl = document.querySelector('img');
+        if (!imgEl) {
+          imgEl = new Image();
+          imgEl.style.visibility = 'hidden';
+          document.body.appendChild(imgEl);
+        }
+        if (bgPath !== imgEl.src) {
+          imgEl.src = bgPath;
+        }
+        ctx.drawImage(imgEl, bgPos[0], bgPos[1]);      
+        setScale();
+      }
+
       return r;
     },
     color: function(clr) {

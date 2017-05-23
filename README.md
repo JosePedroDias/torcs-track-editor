@@ -4,16 +4,11 @@ I got frustrated with the GUI and limitations of the track editor that comes bun
 After using it a bit and reading the scarse documentation on the format, I tried to render existing tracks
 with JS and rendering it to a canvas in the browser.
 
-The project may span in multiple directions from here.
-I may try to support rendering additional properties and improve the precision of the rendering.
-I may expose the track features as abstract vertices so they can be rendered in several impls (ex: webgl).
-I may create an editing interface so one can edit existing or create new tracks.
-
-
 # Tentative Roadmap
 
+* display (optional) segment origin on canvas
+* display (optional) segment number on canvas and on each segment form to better correlate those
+* finish bg loading feature
 * add input type file to allow loading tracks with ease
-* try to correct precision issues (most tracks don't end closed as they should, probably due to curve interpolation misinterpretation of something)
-* create basic editor interface (elect segment, edit params)
-* support for aligning a background image, with scale and pan
 * save track button
+* try to correct precision issues (most tracks don't end closed as they should, probably due to curve interpolation misinterpretation of something)

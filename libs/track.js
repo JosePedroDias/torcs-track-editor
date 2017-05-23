@@ -49,15 +49,24 @@
   function parseTrack(track, ctx, scale, center, selectedSegment) {
     const mt = getMainTrackEl(track);
     const roadWidth = num(mt, 'width');
-    const steps = num(mt, 'profil steps length');
+
+    const bgPath = str(mt, 'bg-path');
+    const bgScale = num(mt, 'bg-scale');
+    const bgPosX = num(mt, 'bg-pos-x');
+    const bgPosY = num(mt, 'bg-pos-y');
+
+    const r = road(ctx, roadWidth, scale, center, bgPath, bgScale, [bgPosX, bgPosY]);
+
+    r.clear();
+
+    //const steps = num(mt, 'profil steps length');
     const segs = getTrackSegments(mt);
 
-    const r = road(ctx, roadWidth, scale, center);
-    ctx.lineWidth = 2;
+    
+    ctx.lineWidth = 1;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
 
-    r.clear();
     segs.forEach(function(s, idx) {
       const clr = (idx === selectedSegment) ? 'red' : 'black';
       r.color(clr);

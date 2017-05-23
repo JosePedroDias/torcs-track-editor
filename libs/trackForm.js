@@ -15,11 +15,11 @@
     function updateBgPath(ev) { str(mt, 'bg-path', ev.target.value); refresh(); }
     function updateBgScale(ev) { num(mt, 'bg-scale', ev.target.value); refresh(); }
     function updateBgPosX(ev) { num(mt, 'bg-pos-x', ev.target.value); refresh(); }
-    function updateBgPosY(ev) { num(mt, 'bg-pos-Y', ev.target.value); refresh(); }
+    function updateBgPosY(ev) { num(mt, 'bg-pos-y', ev.target.value); refresh(); }
     return h('div.header', [
       h('label', 'width'), h('input', {props:{value:width, type:'number'}, on:{change:updateWidth}}), h('br'),
       h('label', 'bg path'), h('input', {props:{value:bgPath}, on:{change:updateBgPath}}), h('br'),
-      h('label', 'bg scale'), h('input', {props:{value:bgScale, type:'number'}, on:{change:updateBgScale}}), h('br'),
+      h('label', 'bg scale'), h('input', {props:{value:bgScale, type:'number', min:0.01, step:0.1}, on:{change:updateBgScale}}), h('br'),
       h('label', 'bg position'),
       h('input', {props:{value:bgPosX, type:'number'}, on:{change:updateBgPosX}}),
       h('input', {props:{value:bgPosY, type:'number'}, on:{change:updateBgPosY}})

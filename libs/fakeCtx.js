@@ -19,9 +19,11 @@ function fakeCtx() {
 
   const api = {
     scale: noop,
+    translate: noop,
     beginPath: noop,
     stroke: noop,
     setTransform: noop,
+    drawImage: noop,
     moveTo: update,
     lineTo: update,
     getBbox: function() { return bbox; }
