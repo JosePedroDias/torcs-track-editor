@@ -284,10 +284,10 @@ the Free Software Foundation; either version 2 of the License, or
       </section>
     </section>
     <!-- custom attrs -->
-    <attstr name="bg-path" val="tracks/palmela.png" />
+    <attstr name="bg-path" val="tracks/palmela-prepared-bg.png" />
     <attnum name="bg-scale" val="0.41" />
-    <attnum name="bg-pos-x" val="-30" />
-    <attnum name="bg-pos-y" val="-111" />
+    <attnum name="bg-pos-x" val="-176" />
+    <attnum name="bg-pos-y" val="-151" />
     <!-- end of custom attrs -->
   </section>
 </params>

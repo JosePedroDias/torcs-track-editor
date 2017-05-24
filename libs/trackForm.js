@@ -36,7 +36,7 @@
 
   function segments(segs, refresh) {
     function add(ev) {
-      refresh(-1, {action:'add', index:0, type:ev.target.dataset.type});
+      refresh(-1, {action:'add', index:ev.target.dataset.index, type:ev.target.dataset.type});
     }
 
     let children = [createBtns(0, add)];
@@ -147,8 +147,9 @@
               }
               
               const p = segs[0].parentNode; // TODO if no segs!
-              if (op.index <= segs.length) {
-                p.insertBefore(sectionEl, segs[op.index]);
+              const sib = segs[op.index];
+              if (sib) {
+                p.insertBefore(sectionEl, sib);
               }
               else {
                 p.appendChild(sectionEl);

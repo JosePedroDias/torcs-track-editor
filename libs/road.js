@@ -28,8 +28,9 @@ function road(ctx, W, SCALE, POS, bgPath, bgScale, bgPos) {
     clear: function() {
       t.clear();
       if (bgPath && isFinite(bgScale) && isFinite(bgPos[0]) && isFinite(bgPos[1])) {
+        ctx.translate(POS[0]/SCALE, POS[1]/SCALE);
         ctx.scale(bgScale, bgScale);
-        ctx.translate(bgScale*bgPos[0], bgScale*bgPos[1]);
+        ctx.translate(bgPos[0], bgPos[1]);
         let imgEl = document.querySelector('img');
         if (!imgEl) {
           imgEl = new Image();
