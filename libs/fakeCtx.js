@@ -24,6 +24,7 @@ function fakeCtx() {
     stroke: noop,
     setTransform: noop,
     drawImage: noop,
+    fillText: noop,
     moveTo: update,
     lineTo: update,
     getBbox: function() { return bbox; }

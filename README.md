@@ -6,8 +6,6 @@ with JS and rendering it to a canvas in the browser.
 
 # Tentative Roadmap
 
-* display (optional) segment origin on canvas
-* display (optional) segment number on canvas and on each segment form to better correlate those
 * finish bg loading feature
 * add input type file to allow loading tracks with ease
 * save track button

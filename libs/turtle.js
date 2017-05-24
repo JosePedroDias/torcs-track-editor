@@ -123,8 +123,13 @@
         }
         return t;
       },
-      color: function(clr) {
-        ctx.strokeStyle = clr;
+      color: function(sClr, fClr) {
+        if (sClr) {
+          ctx.strokeStyle = sClr;
+        }
+        if (fClr) {
+          ctx.fillStyle = fClr;
+        }
         return t;
       },
       clear: function() {

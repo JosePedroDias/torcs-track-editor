@@ -66,10 +66,16 @@
     ctx.lineWidth = 1;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
+    ctx.font = '10px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
 
     segs.forEach(function(s, idx) {
       const clr = (idx === selectedSegment) ? 'red' : 'black';
-      r.color(clr);
+      r.color(clr, clr);
+
+      r.arrow(10, 3, 30);
+      r.label(idx + 1);
 
       const tp = str(s, 'type');
       if (tp === 'str') {

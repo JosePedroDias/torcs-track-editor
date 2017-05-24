@@ -57,7 +57,7 @@
     function remove() { refresh(idx-1, {action:'remove', index:idx}); }
     const lg = num(s, 'lg');
     return h('div.segment', [
-      h('bold', 'straight'), h('br'),
+      h('bold', `straight (#${idx+1})` ), h('br'),
       h('label', 'width'),
       h('input', {props:{value:lg, type:'number'}, on:{change:updateLg}}), ' m',
       h('button', {on:{click:remove}}, '-')
@@ -75,7 +75,7 @@
     const r0 = num(s, 'radius');
     let r1 = num(s, 'end radius');
     return h('div.segment', [
-      h('bold', 'arc'), h('br'),
+      h('bold', `arc (#${idx+1})`), h('br'),
       h('label', 'direction'),
       h('select', {on:{change:updateType}},
         ['lft', 'rgt'].map(function(type) {

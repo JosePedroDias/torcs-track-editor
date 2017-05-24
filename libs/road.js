@@ -27,11 +27,9 @@ function road(ctx, W, SCALE, POS, bgPath, bgScale, bgPos) {
   const r = {
     clear: function() {
       t.clear();
-
       if (bgPath && isFinite(bgScale) && isFinite(bgPos[0]) && isFinite(bgPos[1])) {
         ctx.scale(bgScale, bgScale);
         ctx.translate(bgScale*bgPos[0], bgScale*bgPos[1]);
-        
         let imgEl = document.querySelector('img');
         if (!imgEl) {
           imgEl = new Image();
@@ -44,11 +42,28 @@ function road(ctx, W, SCALE, POS, bgPath, bgScale, bgPos) {
         ctx.drawImage(imgEl, bgPos[0], bgPos[1]);      
         setScale();
       }
-
       return r;
     },
     color: function(clr) {
       t.color(clr);
+      return r;
+    },
+    label: function(txt) {
+      const p = t.getPos();
+      ctx.fillText(txt, p[0], p[1]);
+      return r;
+    },
+    arrow: function(len, len2, angle) {
+      t
+      .push()
+      .straight(len)
+      .push()
+      .turn(180+angle)
+      .straight(len2)
+      .pop()
+      .turn(180-angle)
+      .straight(len2)
+      .pop();
       return r;
     },
     straight: function(l) {
