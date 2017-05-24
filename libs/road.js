@@ -44,8 +44,8 @@ function road(ctx, W, SCALE, POS, bgPath, bgScale, bgPos) {
       }
       return r;
     },
-    color: function(clr) {
-      t.color(clr);
+    color: function(sClr, fClr) {
+      t.color(sClr, fClr);
       return r;
     },
     label: function(txt) {

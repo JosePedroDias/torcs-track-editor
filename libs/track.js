@@ -66,7 +66,7 @@
     ctx.lineWidth = 1;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-    ctx.font = '10px sans-serif';
+    ctx.font = '9px sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
