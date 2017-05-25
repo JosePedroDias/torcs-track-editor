@@ -40,11 +40,11 @@
     }
 
     let children = [createBtns(0, add)];
-
+    const allowRemoval = segs.length > 1;
     segs.forEach(function(s, idx) {
       const tp = str(s, 'type');
-      if (tp === 'str') { children.push(straight(s, idx, refresh)); }
-      else if (tp === 'lft' || tp === 'rgt') { children.push(arc(s, idx, refresh)); }
+      if (tp === 'str') { children.push(straight(s, idx, refresh, allowRemoval)); }
+      else if (tp === 'lft' || tp === 'rgt') { children.push(arc(s, idx, refresh, allowRemoval)); }
       else children.push('TODO: ' + tp);
       children.push(createBtns(idx+1, add));
     });
@@ -52,21 +52,21 @@
     return h('div.segments', children);
   }
 
-  function straight(s, idx, refresh) {
+  function straight(s, idx, refresh, allowRemoval) {
     function updateLg(ev) { num(s, 'lg', ev.target.value); refresh(idx); }
     function remove() { refresh(idx-1, {action:'remove', index:idx}); }
     const lg = num(s, 'lg');
     return h('div.segment', [
       h('div.title', [
         `straight (#${idx+1})`,
-        h('button.delete-segment-button', {on:{click:remove}}, '-')
+        allowRemoval ? h('button.delete-segment-button', {on:{click:remove}}, '-') : ''
       ]),
       h('label', 'width'),
       h('input', {props:{value:lg, type:'number'}, on:{change:updateLg}}), ' m'
     ]);
   }
 
-  function arc(s, idx, refresh) {
+  function arc(s, idx, refresh, allowRemoval) {
     function updateType(ev) { str(s, 'type', ev.target.value); refresh(idx); }
     function updateArc(ev) { num(s, 'arc', ev.target.value); refresh(idx); }
     function updateR0(ev) { num(s, 'radius', ev.target.value); refresh(idx); }
@@ -79,7 +79,7 @@
     return h('div.segment', [
       h('div.title', [
         `arc (#${idx+1})`,
-        h('button.delete-segment-button', {on:{click:remove}}, '-')
+        allowRemoval ? h('button.delete-segment-button', {on:{click:remove}}, '-') : ''
       ]),
       h('label', 'direction'),
       h('select', {on:{change:updateType}},
