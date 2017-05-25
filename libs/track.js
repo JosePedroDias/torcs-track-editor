@@ -138,7 +138,7 @@
     parseTrack(track, ctx, sc.scale, sc.center, -1);
   }
 
-  function editTrack(track) {
+  function editTrack(track, fn) {
     console.log(track);
 
     const canvasSize = 800;
@@ -151,12 +151,15 @@
     const ctx = cEl.getContext('2d');
 
     // do the rendering
-    function refreshTrackCb(selectedIndex) {
+    function refreshTrackCb(selectedIndex, trackOverride) {
+      if (trackOverride) {
+        track = trackOverride;
+      }
       const sc = computeScale(track, canvasSize);
       parseTrack(track, ctx, sc.scale, sc.center, selectedIndex);
     }
 
-    trackForm(track, refreshTrackCb);
+    trackForm(track, fn, refreshTrackCb);
   }
 
   global.parseTrack = parseTrack;

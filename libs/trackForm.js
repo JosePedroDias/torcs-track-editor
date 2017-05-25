@@ -4,9 +4,26 @@
   const patch = snabbdom.default.patch;
   const h = snabbdom.default.h;
 
+  function fileOps(track, fn, refresh) {
+    function onSave() {
+      saveXML(track, fn);
+    }
+
+    function onLoad(fn, doc) {
+      //console.log(fn, doc);
+      refresh(-1, {action:'load', fn:fn, doc:doc});
+    }
+
+    return h('div', [
+      h('input', {props:{type:'file'}, on:{change:loadXMLFact(onLoad)}}),
+      fn,
+      h('button', {on:{click:onSave}}, 'save')
+    ]);
+  }
+
   function header(mt, refresh) {
     const width = num(mt, 'width');
-    const bgPath = str(mt, 'bg-path') || 'tracks/palmela.png';
+    const bgPath = str(mt, 'bg-path') || '';
     const bgScale = num(mt, 'bg-scale') || 1;
     const bgPosX = num(mt, 'bg-pos-x') || 0;
     const bgPosY = num(mt, 'bg-pos-y') || 0;
@@ -107,7 +124,7 @@
     return el;
   }
 
-  function trackForm(track, refreshTrackCb) {
+  function trackForm(track, fn, refreshTrackCb) {
     let selectedIndex = -1;
 
     refreshTrackCb(selectedIndex);
@@ -120,6 +137,7 @@
       segs = getTrackSegments(mt);
 
       newRoot = h('div#gui', [
+        fileOps(track, fn, refresh),
         header(mt, refresh),
         segments(segs, refresh)
       ]);
@@ -130,6 +148,13 @@
     function refresh(newSelectedIndex, op) {
       if (op) {
         switch (op.action) {
+          case 'load':
+            {
+              fn = op.fn;
+              track = op.doc;
+              refreshTrackCb(-1, track);
+            }
+            break;
           case 'remove':
             {
               const s = segs[op.index];

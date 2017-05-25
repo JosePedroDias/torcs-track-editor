@@ -10,8 +10,8 @@ This editor should work just as well for editing speend dreams maps (that's my t
 
 # Tentative Roadmap
 
-* add input type file to allow loading tracks with ease
-* save track button
+* fix segment form layout with an overflow to allow scrolling
+* support zoom centered of selected segment
 * try to correct precision issues (most tracks don't end closed as they should, probably due to curve interpolation misinterpretation of something)
 
 

@@ -6,7 +6,7 @@
     const markup = new XMLSerializer().serializeToString(xmlDoc);
     const b64 = btoa(markup);
     const aEl = document.createElement('a');
-    aEl.setAttribute('download', fileName + '.xml');
+    aEl.setAttribute('download', fileName);
     aEl.href = 'data:text/xml;base64,\n' + b64;
     ctnEl.appendChild(aEl);
     aEl.click();
@@ -30,10 +30,20 @@
   function loadXML(inputEl, cb) {
     inputEl.addEventListener('change', function() {
       const file0 = inputEl.files[0];
-      return parseBlobIntoXML(file0, cb);
+      parseBlobIntoXML(file0, cb);
     });
+  }
+
+  // to be used by snabbdom or similar (returns an onchange event handler)
+  function onChangeLoadXmlEventHandlerFactory(cb) {
+    return function(ev) {
+      const inputEl = ev.target;
+      const file0 = inputEl.files[0];
+      parseBlobIntoXML(file0, cb);
+    }
   }
 
   global.saveXML = saveXML;
   global.loadXML = loadXML;
+  global.loadXMLFact = onChangeLoadXmlEventHandlerFactory;
 })(this);

@@ -19,6 +19,7 @@
     <div id="gui"></div>
 
     <script src="libs/ajax.js"></script>
+    <script src="libs/fileIO.js"></script>
     <script src="libs/fakeCtx.js"></script>
     <script src="libs/turtle.js"></script>
     <script src="libs/road.js"></script>
@@ -26,7 +27,7 @@
     <script src="libs/trackForm.js"></script>
 
     <script>
-      let track = 'tracks/basic.xml'; // empty / basic
+      let trackName = 'tracks/basic.xml'; // empty / basic
 
       if (location.hash) {
         let url = location.hash.substring(1);
@@ -34,14 +35,15 @@
           url = url.split('://')[1];
           url = 'https://cors-anywhere.herokuapp.com/' + url;
         }
-        track = url;
+        trackName = url;
       }
 
-      ajax(track, function(err, track) {
+      ajax(trackName, function(err, track) {
         if (err) {
-          return window.alert('Problem loading track ' + track);
+          return window.alert('Problem loading track ' + trackName);
         }
-        editTrack(track);
+        const fn = trackName.split('/').pop();
+        editTrack(track, fn);
       });
     </script>
   </body>
