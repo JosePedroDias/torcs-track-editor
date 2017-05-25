@@ -86,7 +86,7 @@
         const arc = num(s, 'arc'); // arc, in degrees
         const r0 = num(s, 'radius'); // start radius, in m
         let r1 = num(s, 'end radius'); // end radius, in m
-        let sign = (tp === 'rgt') ? -1 : 1;
+        let sign = (tp === 'lft') ? -1 : 1;
         if (isNaN(r1)) { r1 = r0; }
         r.arc(arc*sign, r0, r1);
       }

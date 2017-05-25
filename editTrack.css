@@ -21,6 +21,7 @@ canvas {
 label {
   display: inline-block;
   width: 5em;
+  font-style: italic;
 }
 
 input {
@@ -28,16 +29,19 @@ input {
   text-align: right;
 }
 
-button {
-
+.delete-segment-button {
+  position: absolute;
+  left: 0;
 }
 
-bold {
+.create-segment-buttons {
+  text-align: right;
+}
+
+.title {
   font-weight: bold;
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: relative;
+  text-align: center;
 }
 
 .segment {

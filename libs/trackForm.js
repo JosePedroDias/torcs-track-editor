@@ -27,9 +27,9 @@
   }
 
   function createBtns(idx, add) {
-    return h('div.buttons', [
-      h('button', {attrs:{'data-type':'str', 'data-index':idx}, on:{click:add}}, '+str'),
+    return h('div.create-segment-buttons', [
       h('button', {attrs:{'data-type':'lft', 'data-index':idx}, on:{click:add}}, '+lft'),
+      h('button', {attrs:{'data-type':'str', 'data-index':idx}, on:{click:add}}, '+str'),
       h('button', {attrs:{'data-type':'rgt', 'data-index':idx}, on:{click:add}}, '+rgt')
     ]);
   }
@@ -57,10 +57,12 @@
     function remove() { refresh(idx-1, {action:'remove', index:idx}); }
     const lg = num(s, 'lg');
     return h('div.segment', [
-      h('bold', `straight (#${idx+1})` ), h('br'),
+      h('div.title', [
+        `straight (#${idx+1})`,
+        h('button.delete-segment-button', {on:{click:remove}}, '-')
+      ]),
       h('label', 'width'),
-      h('input', {props:{value:lg, type:'number'}, on:{change:updateLg}}), ' m',
-      h('button', {on:{click:remove}}, '-')
+      h('input', {props:{value:lg, type:'number'}, on:{change:updateLg}}), ' m'
     ]);
   }
 
@@ -75,7 +77,10 @@
     const r0 = num(s, 'radius');
     let r1 = num(s, 'end radius');
     return h('div.segment', [
-      h('bold', `arc (#${idx+1})`), h('br'),
+      h('div.title', [
+        `arc (#${idx+1})`,
+        h('button.delete-segment-button', {on:{click:remove}}, '-')
+      ]),
       h('label', 'direction'),
       h('select', {on:{change:updateType}},
         ['lft', 'rgt'].map(function(type) {
@@ -87,8 +92,7 @@
       h('label', 'radius'),
       h('input', {props:{value:r0, type:'number'}, on:{change:updateR0}}), ' m', h('br'),
       h('label', 'end radius'),
-      h('input', {props:{value:r1||'', type:'number'}, on:{change:updateR1}}), ' m',
-      h('button', {on:{click:remove}}, '-')
+      h('input', {props:{value:r1||'', type:'number'}, on:{change:updateR1}}), ' m'
     ]);
   }
 
@@ -137,13 +141,13 @@
               const sectionEl = document.createElement('section');
               if (op.type === 'str') {
                 createAttr(sectionEl, 'type', 'str');
-                createAttr(sectionEl, 'lg', 200, 'm');
+                createAttr(sectionEl, 'lg', 50, 'm');
               }
               else {
                 createAttr(sectionEl, 'type', op.type);
-                createAttr(sectionEl, 'arc', 200, 'deg');
-                createAttr(sectionEl, 'radius', 200, 'm');
-                createAttr(sectionEl, 'end radius', 200, 'm');
+                createAttr(sectionEl, 'arc', 90, 'deg');
+                createAttr(sectionEl, 'radius', 100, 'm');
+                // createAttr(sectionEl, 'end radius', 100, 'm');
               }
               
               const p = segs[0].parentNode; // TODO if no segs!
