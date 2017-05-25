@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>fileIO demo</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>fileIO demo</h1>
+    
+    <script src="libs/fileIO.js"></script>
+
+    load: <input type="file" id="in">
+
+    <br><br>
+
+    <button id="out">save</button>
+
+    <script>
+      'use strict';
+      
+      const inEl = document.getElementById('in');
+      const outEl = document.getElementById('out');
+
+      loadXML(inEl, function(fn, doc) {
+        console.log(fn, doc);
+        window.doc = doc;
+      });
+
+      outEl.addEventListener('click', function() {
+        saveXML(window.doc, 'fn');
+      })
+    </script>
+  </body>
+</html>
