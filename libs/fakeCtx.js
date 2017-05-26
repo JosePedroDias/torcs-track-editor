@@ -20,6 +20,7 @@ function fakeCtx() {
   const api = {
     scale: noop,
     translate: noop,
+    rotate: noop,
     beginPath: noop,
     stroke: noop,
     setTransform: noop,

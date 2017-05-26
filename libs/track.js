@@ -50,12 +50,23 @@
     const mt = getMainTrackEl(track);
     const roadWidth = num(mt, 'width');
 
-    const bgPath = str(mt, 'bg-path');
-    const bgScale = num(mt, 'bg-scale');
-    const bgPosX = num(mt, 'bg-pos-x');
-    const bgPosY = num(mt, 'bg-pos-y');
+    const bgPath = str(mt, 'bg-path') || '';
+    const bgScale = num(mt, 'bg-scale') || 1;
+    const bgRot = num(mt, 'bg-rotation') || 0;
+    const bgPosX = num(mt, 'bg-pos-x') || 0;
+    const bgPosY = num(mt, 'bg-pos-y') || 0;
 
-    const r = road(ctx, roadWidth, scale, center, bgPath, bgScale, [bgPosX, bgPosY]);
+    const r = road(ctx, {
+      roadWidth: roadWidth,
+      scale: scale,
+      center: center,
+      bg: {
+        path: bgPath,
+        scale: bgScale,
+        rotation: bgRot,
+        position: [bgPosX, bgPosY]
+      }
+    });
 
     r.clear();
 
@@ -71,7 +82,7 @@
     ctx.textBaseline = 'middle';
 
     segs.forEach(function(s, idx) {
-      const clr = (idx === selectedSegment) ? 'red' : 'black';
+      const clr = (idx === selectedSegment) ? '#F0F' : '#0FF';
       r.color(clr, clr);
 
       r.arrow(10, 3, 30);

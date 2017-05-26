@@ -1,55 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE params SYSTEM "../../../src/libs/tgf/params.dtd" [
-<!ENTITY default-surfaces SYSTEM "../../../data/tracks/surfaces.xml">
-]>
-
-<params name="test" type="param" mode="mw">
-  <section name="Surfaces">&default-surfaces;</section>
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE params SYSTEM "../../../src/libs/tgf/params.dtd"><params name="test" type="param" mode="mw">
+  <section name="Surfaces"/>
   <section name="Header">
-    <attstr name="name" val="empty" />
-    <attstr name="category" val="empty" />
-    <attnum name="version" val="4" />
-    <attstr name="author" val="todo author" />
-    <attstr name="description" val="todo desc" />
+    <attstr name="name" val="empty"/>
+    <attstr name="category" val="empty"/>
+    <attnum name="version" val="4"/>
+    <attstr name="author" val="todo author"/>
+    <attstr name="description" val="todo desc"/>
   </section>
   <section name="Graphic">
-    <attstr name="3d description" val="empty.ac" />
+    <attstr name="3d description" val="empty.ac"/>
     <section name="Terrain Generation">
-      <attnum name="track step" unit="m" val="20" />
-      <attnum name="border margin" unit="m" val="50" />
-      <attnum name="border step" unit="m" val="30" />
-      <attnum name="border height" unit="m" val="15" />
-      <attstr name="orientation" val="clockwise" />
+      <attnum name="track step" unit="m" val="20"/>
+      <attnum name="border margin" unit="m" val="50"/>
+      <attnum name="border step" unit="m" val="30"/>
+      <attnum name="border height" unit="m" val="15"/>
+      <attstr name="orientation" val="clockwise"/>
     </section>
   </section>
   <section name="Main Track">
-    <attnum name="width" unit="m" val="12.0" />
-    <attnum name="profil steps length" unit="m" val="4.0" />
-    <attstr name="surface" val="asphalt2-lines" />
+    <attnum name="width" unit="m" val="12.0"/>
+    <attnum name="profil steps length" unit="m" val="4.0"/>
+    <attstr name="surface" val="asphalt2-lines"/>
     <section name="Track Segments">
       <section>
-        <attstr name="type" val="str" />
-        <attnum name="lg" unit="m" val="100.0" />
+        <attstr name="type" val="str"/>
+        <attnum name="lg" unit="m" val="53"/>
       </section>
       <section>
-        <attstr name="type" val="rgt" />
-        <attnum name="arc" unit="deg" val="180" />
-        <attnum name="radius" unit="m" val="100" />
+        <attstr name="type" val="rgt"/>
+        <attnum name="arc" unit="deg" val="30"/>
+        <attnum name="radius" unit="m" val="21"/>
       </section>
-      <section>
-        <attstr name="type" val="str" />
-        <attnum name="lg" unit="m" val="100.0" />
-      </section>
-      <section>
-        <attstr name="type" val="rgt" />
-        <attnum name="arc" unit="deg" val="180" />
-        <attnum name="radius" unit="m" val="100" />
-      </section>
-    </section>
-    <attstr name="bg-path" val="bgs/palmela.png" />
-    <attnum name="bg-scale" val="0.41" />
-    <attnum name="bg-pos-x" val="-176" />
-    <attnum name="bg-pos-y" val="-151" />
+      
+      
+    <section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="32" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="lft"></attstr><attnum name="arc" val="30" unit="deg"></attnum><attnum name="radius" val="30" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="11" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="lft"></attstr><attnum name="arc" val="45" unit="deg"></attnum><attnum name="radius" val="20" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="14" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="45" unit="deg"></attnum><attnum name="radius" val="20" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="14" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="90" unit="deg"></attnum><attnum name="radius" val="17" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="16" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="45" unit="deg"></attnum><attnum name="radius" val="21" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="6" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="lft"></attstr><attnum name="arc" val="90" unit="deg"></attnum><attnum name="radius" val="20" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="4" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="90" unit="deg"></attnum><attnum name="radius" val="19" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="90" unit="deg"></attnum><attnum name="radius" val="22" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="34" unit="deg"></attnum><attnum name="radius" val="14" unit="m"></attnum><attnum name="end radius" val="40"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="4" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="14" unit="deg"></attnum><attnum name="radius" val="66" unit="m"></attnum><attnum name="end radius" val="15"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="10" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="lft"></attstr><attnum name="arc" val="93" unit="deg"></attnum><attnum name="radius" val="18" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="25" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="30" unit="deg"></attnum><attnum name="radius" val="28" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="24" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="lft"></attstr><attnum name="arc" val="68" unit="deg"></attnum><attnum name="radius" val="58" unit="m"></attnum><attnum name="end radius" val="9"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="lft"></attstr><attnum name="arc" val="61" unit="deg"></attnum><attnum name="radius" val="6" unit="m"></attnum><attnum name="end radius" val="54"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="lft"></attstr><attnum name="arc" val="81" unit="deg"></attnum><attnum name="radius" val="22" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="57" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="79" unit="deg"></attnum><attnum name="radius" val="15" unit="m"></attnum><attnum name="end radius" val="23"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="16" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="90" unit="deg"></attnum><attnum name="radius" val="20" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="2" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="49" unit="deg"></attnum><attnum name="radius" val="41" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="22" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="lft"></attstr><attnum name="arc" val="35" unit="deg"></attnum><attnum name="radius" val="28" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="9" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="30" unit="deg"></attnum><attnum name="radius" val="35" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="7" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="lft"></attstr><attnum name="arc" val="56" unit="deg"></attnum><attnum name="radius" val="19" unit="m"></attnum><attnum name="end radius" val=""></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="42" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="lft"></attstr><attnum name="arc" val="172" unit="deg"></attnum><attnum name="radius" val="15" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="28" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="90" unit="deg"></attnum><attnum name="radius" val="33" unit="m"></attnum><attnum name="end radius" val="3"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="3" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="92" unit="deg"></attnum><attnum name="radius" val="16" unit="m"></attnum><attnum name="end radius" val="28"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="20" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="30" unit="deg"></attnum><attnum name="radius" val="32" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="53" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="79" unit="deg"></attnum><attnum name="radius" val="15" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="24" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="70" unit="deg"></attnum><attnum name="radius" val="39" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="23" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="lft"></attstr><attnum name="arc" val="154" unit="deg"></attnum><attnum name="radius" val="17" unit="m"></attnum><attnum name="end radius" val="21"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="lft"></attstr><attnum name="arc" val="20" unit="deg"></attnum><attnum name="radius" val="37" unit="m"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="90" unit="deg"></attnum><attnum name="radius" val="14" unit="m"></attnum><attnum name="end radius" val=""></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="rgt"></attstr><attnum name="arc" val="99" unit="deg"></attnum><attnum name="radius" val="35" unit="m"></attnum><attnum name="end radius" val="17"></attnum></section><section xmlns="http://www.w3.org/1999/xhtml"><attstr name="type" val="str"></attstr><attnum name="lg" val="62" unit="m"></attnum></section></section>
+    <attstr name="bg-path" val="bgs/palmela3.png"/>
+    <attnum name="bg-scale" val="0.2"/>
+    <attnum name="bg-rotation" val="120.5"/>
+    <attnum name="bg-pos-x" val="-273"/>
+    <attnum name="bg-pos-y" val="-560"/>
   </section>
 </params>
-

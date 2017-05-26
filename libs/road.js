@@ -1,5 +1,12 @@
-function road(ctx, W, SCALE, POS, bgPath, bgScale, bgPos) {
+function road(ctx, cfg) {//} W, SCALE, POS, bgPath, bgScale, bgPos) {
   'use strict';
+
+  const D2R = Math.PI / 180;
+
+  const W = cfg.roadWidth;
+  const SCALE = cfg.scale;
+  const POS = cfg.center;
+  const BG = cfg.bg;
 
   function setScale() {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -27,20 +34,21 @@ function road(ctx, W, SCALE, POS, bgPath, bgScale, bgPos) {
   const r = {
     clear: function() {
       t.clear();
-      if (bgPath && isFinite(bgScale) && isFinite(bgPos[0]) && isFinite(bgPos[1])) {
+      if (BG.path) {
         ctx.translate(POS[0]/SCALE, POS[1]/SCALE);
-        ctx.scale(bgScale, bgScale);
-        ctx.translate(bgPos[0], bgPos[1]);
+        ctx.scale(BG.scale, BG.scale);
+        ctx.rotate(BG.rotation * D2R);
+        ctx.translate(BG.position[0], BG.position[1]);
         let imgEl = document.querySelector('img');
         if (!imgEl) {
           imgEl = new Image();
           imgEl.style.visibility = 'hidden';
           document.body.appendChild(imgEl);
         }
-        if (bgPath !== imgEl.src) {
-          imgEl.src = bgPath;
+        if (BG.path !== imgEl.src) {
+          imgEl.src = BG.path;
         }
-        ctx.drawImage(imgEl, bgPos[0], bgPos[1]);      
+        ctx.drawImage(imgEl, BG.position[0], BG.position[1]);      
         setScale();
       }
       return r;

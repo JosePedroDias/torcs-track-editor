@@ -3,19 +3,26 @@ html, body {
 }
 
 body {
-  overflow: auto;
+  overflow: hidden;
   font-family: sans-serif;
 }
 
 #gui {
+  width: 420px;
+  height: 100vw;
+  overflow: auto;
+}
+
+#gui2 {
   width: 400px;
+  height: 10000px;
 }
 
 canvas {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #EEE;
+  background-color: #444;
 }
 
 label {

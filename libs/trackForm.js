@@ -25,18 +25,21 @@
     const width = num(mt, 'width');
     const bgPath = str(mt, 'bg-path') || '';
     const bgScale = num(mt, 'bg-scale') || 1;
+    const bgRot = num(mt, 'bg-rotation') || 0;
     const bgPosX = num(mt, 'bg-pos-x') || 0;
     const bgPosY = num(mt, 'bg-pos-y') || 0;
     //const steps = num(mt, 'profil steps length');
     function updateWidth(ev) { num(mt, 'width', ev.target.value); refresh(); }
     function updateBgPath(ev) { str(mt, 'bg-path', ev.target.value); refresh(); }
+    function updateBgRot(ev) { num(mt, 'bg-rotation', ev.target.value); refresh(); }
     function updateBgScale(ev) { num(mt, 'bg-scale', ev.target.value); refresh(); }
     function updateBgPosX(ev) { num(mt, 'bg-pos-x', ev.target.value); refresh(); }
     function updateBgPosY(ev) { num(mt, 'bg-pos-y', ev.target.value); refresh(); }
     return h('div.header', [
       h('label', 'width'), h('input', {props:{value:width, type:'number'}, on:{change:updateWidth}}), h('br'),
       h('label', 'bg path'), h('input', {props:{value:bgPath}, on:{change:updateBgPath}}), h('br'),
-      h('label', 'bg scale'), h('input', {props:{value:bgScale, type:'number', min:0.01, step:0.1}, on:{change:updateBgScale}}), h('br'),
+      h('label', 'bg scale'), h('input', {props:{value:bgScale, type:'number', min:0.01, step:0.01}, on:{change:updateBgScale}}), h('br'),
+      h('label', 'bg rot'), h('input', {props:{value:bgRot, type:'number'}, on:{change:updateBgRot}}), h('br'),
       h('label', 'bg position'),
       h('input', {props:{value:bgPosX, type:'number'}, on:{change:updateBgPosX}}),
       h('input', {props:{value:bgPosY, type:'number'}, on:{change:updateBgPosY}})
@@ -137,9 +140,11 @@
       segs = getTrackSegments(mt);
 
       newRoot = h('div#gui', [
-        fileOps(track, fn, refresh),
-        header(mt, refresh),
-        segments(segs, refresh)
+        h('div#gui2', [
+          fileOps(track, fn, refresh),
+          header(mt, refresh),
+          segments(segs, refresh)
+        ])
       ]);
       
       root = patch(root, newRoot);
