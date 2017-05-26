@@ -46,7 +46,7 @@
     return segs;
   }
 
-  function parseTrack(track, ctx, scale, center, selectedSegment) {
+  function parseTrack(track, ctx, scale, center, selectedSegment, drawAux) {
     const mt = getMainTrackEl(track);
     const roadWidth = num(mt, 'width');
 
@@ -85,8 +85,12 @@
       const clr = (idx === selectedSegment) ? '#F0F' : '#0FF';
       r.color(clr, clr);
 
-      r.arrow(10, 3, 30);
-      r.label(idx + 1);
+      if (drawAux) {
+        ctx.globalAlpha = 0.33;
+        r.arrow(10, 3, 30);
+        ctx.globalAlpha = 1;
+        r.label(idx + 1);
+      }
 
       const tp = str(s, 'type');
       if (tp === 'str') {
@@ -134,7 +138,7 @@
     };
   }
 
-  function renderTrack(track) {
+  function renderTrack(track, drawAux) {
     const canvasSize = 800;
     const sc = computeScale(track, canvasSize);
 
@@ -146,11 +150,11 @@
     const ctx = cEl.getContext('2d');
 
     // do the rendering
-    parseTrack(track, ctx, sc.scale, sc.center, -1);
+    parseTrack(track, ctx, sc.scale, sc.center, -1, drawAux);
   }
 
   function editTrack(track, fn) {
-    console.log(track);
+    // console.log(track);
 
     const canvasSize = 800;
 
@@ -167,7 +171,7 @@
         track = trackOverride;
       }
       const sc = computeScale(track, canvasSize);
-      parseTrack(track, ctx, sc.scale, sc.center, selectedIndex);
+      parseTrack(track, ctx, sc.scale, sc.center, selectedIndex, true);
     }
 
     trackForm(track, fn, refreshTrackCb);
